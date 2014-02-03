@@ -77,6 +77,31 @@ public class LengthTest {
     }
 
     @Test
+    public void testComparingTwoEqualLengths(){
+        Length length1 = new Length(100,LengthUnit.CENTIMETER);
+        Length length2 = new Length(1,LengthUnit.METER);
+
+        assertEquals(0.0,length1.compareTo(length2));
+    }
+
+    @Test
+    public void testComparingWhenFirstLengthGreaterThanSecond(){
+        Length length1 = new Length(101,LengthUnit.CENTIMETER);
+        Length length2 = new Length(1,LengthUnit.METER);
+
+        assertEquals(1.0,length1.compareTo(length2));
+    }
+
+
+    @Test
+    public void testComparingWhenFirstLengthSmallerThanSecond(){
+        Length length1 = new Length(1,LengthUnit.METER);
+        Length length2 = new Length(101,LengthUnit.CENTIMETER);
+
+        assertEquals(-0.01,length1.compareTo(length2),0.2);
+    }
+
+    @Test
     public void testAddingLengthsOfSameUnit() {
         Length length1 = new Length(100,LengthUnit.CENTIMETER);
         Length length2 = new Length(200,LengthUnit.CENTIMETER);
@@ -89,8 +114,8 @@ public class LengthTest {
 
     @Test
     public void testAddingLengthsOfDifferentUnits() {
-        Length length1 = new Length(2,LengthUnit.KILOMETER);
-        Length length2 = new Length(1000,LengthUnit.METER);
+        Length length1 = new Length(1000,LengthUnit.METER);
+        Length length2 = new Length(2,LengthUnit.KILOMETER);
         Length expected = new Length(3.0,LengthUnit.KILOMETER);
 
         Length actual = length1.add(length2);

@@ -1,5 +1,6 @@
 package com.pallavig.measurement.units;
 
 public interface Unit {
-    double getMultiplicationFactor();
+        public double compareTo(Unit unit);
+        double getMultiplicationFactor();
 }

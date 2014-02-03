@@ -20,4 +20,9 @@ public enum LengthUnit implements Unit {
     public double getMultiplicationFactor() {
         return multiplier;
     }
+
+    @Override
+    public double compareTo(Unit unit) {
+        return this.getMultiplicationFactor() - unit.getMultiplicationFactor();
+    }
 }

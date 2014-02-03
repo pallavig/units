@@ -1,5 +1,6 @@
 package com.pallavig.measurement;
 
+import com.pallavig.measurement.measures.Measure;
 import com.pallavig.measurement.measures.Volume;
 import com.pallavig.measurement.units.VolumeUnit;
 import org.junit.Test;
@@ -64,6 +65,52 @@ public class VolumeTest {
         Volume volume1 = new Volume(1000,VolumeUnit.MILLILITER);
         Volume volume2 = new Volume(2,VolumeUnit.LITTER);
         Volume expected = new Volume(3000,VolumeUnit.MILLILITER);
+
+        Volume actual = volume1.add(volume2);
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void testComparingWhenFirstVolumeGreaterThanSecond(){
+        Volume volume1 = new Volume(1,VolumeUnit.LITTER);
+        Volume volume2 = new Volume(999,VolumeUnit.MILLILITER);
+
+        assertEquals(0.001, volume1.compareTo(volume2), 0.3);
+    }
+
+    @Test
+    public void testComparingWhenFirstLengthSmallerThanSecond(){
+        Volume volume1 = new Volume(999,VolumeUnit.MILLILITER);
+        Volume volume2 = new Volume(1,VolumeUnit.LITTER);
+
+        assertEquals(-1,volume1.compareTo(volume2),0.2);
+    }
+
+    @Test
+    public void testComparingTwoEqualVolumes(){
+        Volume volume1 = new Volume(1,VolumeUnit.LITTER);
+        Volume volume2 = new Volume(1000,VolumeUnit.MILLILITER);
+
+        assertEquals(0.0,volume1.compareTo(volume2));
+    }
+
+    @Test
+    public void testAddingVolumesHavingSameUnit() {
+        Volume volume1 = new Volume(1,VolumeUnit.LITTER);
+        Volume volume2 = new Volume(1,VolumeUnit.LITTER);
+        Volume expected  = new Volume(2,VolumeUnit.LITTER);
+
+        Volume actual = volume1.add(volume2);
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void testAddingVolumesHavingDifferentUnit() {
+        Volume volume1 = new Volume(2000,VolumeUnit.MILLILITER);
+        Volume volume2 = new Volume(2,VolumeUnit.LITTER);
+        Volume expected = new Volume(4,VolumeUnit.LITTER);
 
         Volume actual = volume1.add(volume2);
 
