@@ -1,7 +1,7 @@
-package com.pallavig.practiceLength;
+package com.pallavig.measurement;
 
-import com.pallavig.practiceLength.measures.Volume;
-import com.pallavig.practiceLength.units.VolumeUnit;
+import com.pallavig.measurement.measures.Volume;
+import com.pallavig.measurement.units.VolumeUnit;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;

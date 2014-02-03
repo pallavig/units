@@ -1,6 +1,6 @@
-package com.pallavig.practiceLength.measures;
+package com.pallavig.measurement.measures;
 
-import com.pallavig.practiceLength.units.VolumeUnit;
+import com.pallavig.measurement.units.VolumeUnit;
 
 public class Volume extends Measure {
     public Volume(double value, VolumeUnit unit) {

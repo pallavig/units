@@ -23,3 +23,7 @@
 *.jar
 *.war
 *.ear
+length/
+previousLength/
+probability/
+shapes/

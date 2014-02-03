@@ -1,6 +1,8 @@
-package com.pallavig.practiceLength;
+package com.pallavig.measurement.measures;
 
-public class Length extends Measure{
+import com.pallavig.measurement.units.LengthUnit;
+
+public class Length extends Measure {
 
     public Length(double value, LengthUnit unit) {
         super(value, unit);
@@ -18,14 +20,18 @@ public class Length extends Measure{
         int value2 = (int)Math.round(length2.getValue()*100);
         if(!(value1==value2)) return false;
 
-        if(length1.getUnit().getMultiplicationFactor() != length2.getUnit().getMultiplicationFactor()) return false;
+        if(length1.getUnit().getClass() != length2.getUnit().getClass()) return false;
 
         return true;
     }
 
-
     public Length convert(LengthUnit unit) {
-        double value = (this.getValue()*unit.getMultiplicationFactor())/this.getUnit().getMultiplicationFactor();
+        double value = convertToSpecificUnitValue(unit);
         return new Length(value,unit);
+    }
+
+    public Length add(Length length) {
+        Length lengthInCalledObjectsUnit = length.convert((LengthUnit)this.getUnit());
+        return new Length(this.getValue()+lengthInCalledObjectsUnit.getValue(),(LengthUnit)this.getUnit());
     }
 }

@@ -1,7 +1,7 @@
-package com.pallavig.practiceLength;
+package com.pallavig.measurement;
 
-import com.pallavig.practiceLength.measures.Length;
-import com.pallavig.practiceLength.units.LengthUnit;
+import com.pallavig.measurement.measures.Length;
+import com.pallavig.measurement.units.LengthUnit;
 import org.junit.Test;
 import static junit.framework.Assert.assertEquals;
 

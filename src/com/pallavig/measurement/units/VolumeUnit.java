@@ -1,6 +1,4 @@
-package com.pallavig.practiceLength.units;
-
-import com.pallavig.practiceLength.units.Unit;
+package com.pallavig.measurement.units;
 
 public enum VolumeUnit implements Unit {
     MILLILITER(1),

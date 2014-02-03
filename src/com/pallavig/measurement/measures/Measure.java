@@ -1,8 +1,6 @@
-package com.pallavig.practiceLength.measures;
+package com.pallavig.measurement.measures;
 
-import com.pallavig.practiceLength.units.LengthUnit;
-import com.pallavig.practiceLength.units.Unit;
-import com.pallavig.practiceLength.units.VolumeUnit;
+import com.pallavig.measurement.units.Unit;
 
 public abstract class Measure {
     private double value;
