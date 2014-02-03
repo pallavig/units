@@ -1,16 +1,33 @@
 package com.pallavig.practiceLength;
 
+import com.pallavig.practiceLength.measures.Length;
+import com.pallavig.practiceLength.units.LengthUnit;
 import org.junit.Test;
-
 import static junit.framework.Assert.assertEquals;
 
 public class LengthTest {
     @Test
     public void testCreatingLength() throws Exception {
-        Length length = new Length(1,LengthUnit.CENTIMETER);
+        Length length = new Length(1, LengthUnit.CENTIMETER);
 
         assertEquals(1.0,length.getValue());
         assertEquals(LengthUnit.CENTIMETER,length.getUnit());
+    }
+
+    @Test
+    public void testEqualsWithSameUnit() {
+        Length length1 = new Length(1,LengthUnit.CENTIMETER);
+        Length length2 = new Length(1,LengthUnit.CENTIMETER);
+
+        assertEquals(length1,length2);
+    }
+
+    @Test
+    public void testEqualsWIthDifferentUnit() {
+        Length lengthInMeter = new Length(1,LengthUnit.METER);
+        Length lengthInCentimeter = new Length(100,LengthUnit.CENTIMETER);
+
+        assertEquals(lengthInCentimeter,lengthInMeter);
     }
 
     @Test
@@ -57,5 +74,27 @@ public class LengthTest {
 
         Length lengthInCentimeter = lengthInYard.convert(LengthUnit.CENTIMETER);
         assertEquals(true,lengthInYard.equals(lengthInCentimeter));
+    }
+
+    @Test
+    public void testAddingLengthsOfSameUnit() {
+        Length length1 = new Length(100,LengthUnit.CENTIMETER);
+        Length length2 = new Length(200,LengthUnit.CENTIMETER);
+        Length expected = new Length(300,LengthUnit.CENTIMETER);
+
+        Length actual = length1.add(length2);
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void testAddingLengthsOfDifferentUnits() {
+        Length length1 = new Length(2,LengthUnit.KILOMETER);
+        Length length2 = new Length(1000,LengthUnit.METER);
+        Length expected = new Length(3.0,LengthUnit.KILOMETER);
+
+        Length actual = length1.add(length2);
+
+        assertEquals(expected,actual);
     }
 }
